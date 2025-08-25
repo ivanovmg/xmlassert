@@ -57,7 +57,9 @@ class PostProcessingVisitor:
 
 
 def _traverse_with_factory(
-    elem: Element, factory: IndentVisitorFactory, level: int = 0
+    elem: Element,
+    factory: IndentVisitorFactory,
+    level: int = 0,
 ) -> None:
     # Pre-visit with appropriate visitor
     pre_visitor = factory.get_pre_visitor(elem)
