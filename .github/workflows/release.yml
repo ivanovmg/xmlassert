@@ -154,6 +154,15 @@ jobs:
       with:
         name: distribution-packages
 
+    - name: DEBUG Check current directory
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Contents:"
+        ls -la
+        echo "Dist directory:"
+        ls -la dist/ || echo "dist/ doesn't exist"
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
