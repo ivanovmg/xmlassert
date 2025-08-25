@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Maxim Ivanov
+# SPDX-License-Identifier: MIT
+
 import difflib
 
 from .formatting import pretty_format_xml

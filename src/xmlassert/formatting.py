@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Maxim Ivanov
+# SPDX-License-Identifier: MIT
+
 from xml.etree.ElementTree import canonicalize
 
 from defusedxml.ElementTree import fromstring, tostring

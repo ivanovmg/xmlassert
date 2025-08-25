@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Maxim Ivanov
+# SPDX-License-Identifier: MIT
+
 from .diffs import clean_diff
 from .formatting import canonical
 

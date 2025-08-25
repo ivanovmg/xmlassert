@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Maxim Ivanov
+# SPDX-License-Identifier: MIT
+
 .PHONY: help tests lint format typecheck build publish clean install-dev
 
 # Default target

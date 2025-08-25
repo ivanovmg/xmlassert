@@ -1,3 +1,6 @@
+# Copyright (c) 2025 Maxim Ivanov
+# SPDX-License-Identifier: MIT
+
 from textwrap import dedent
 from typing import Any
 from xml.etree.ElementTree import ParseError
