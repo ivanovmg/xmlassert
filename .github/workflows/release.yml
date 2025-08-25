@@ -166,7 +166,7 @@ jobs:
       run: |
         python -m pip install --index-url https://test.pypi.org/simple/ \
           --extra-index-url https://pypi.org/simple/ \
-          xmlassert==${{ github.ref_name#v }}
+          xmlassert==${{ fromJSON('{"v": "' + github.ref_name + '"}').v.replace('v', '') }}
 
   pypi:
     name: Publish to PyPI
@@ -203,7 +203,7 @@ jobs:
       run: |
         # Wait a moment for PyPI to update
         sleep 30
-        pip install xmlassert==${{ github.ref_name#v }}
+        pip install xmlassert==${{ fromJSON('{"v": "' + github.ref_name + '"}').v.replace('v', '') }}
 
   github-release:
     name: Create GitHub Release
