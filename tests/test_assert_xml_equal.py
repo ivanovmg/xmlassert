@@ -1,3 +1,4 @@
+from typing import Any
 from xml.etree.ElementTree import ParseError
 
 import pytest
@@ -198,7 +199,7 @@ def test_InvalidXml_RaisesParseError(invalid_xml: str) -> None:
         {},
     ],
 )
-def test_NonStringInput_RaisesError(invalid_input) -> None:
+def test_NonStringInput_RaisesError(invalid_input: Any) -> None:
     valid_xml = '<root><child/></root>'
 
     with pytest.raises((TypeError, ValueError)):
