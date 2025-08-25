@@ -1,0 +1,137 @@
+[build-system]
+requires = ['setuptools>=45', 'wheel']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'xmlassert'
+version = '0.1.0rc1'
+description = 'Human-readable XML comparison for testing with clean diff output'
+readme = 'README.md'
+requires-python = '>=3.8'
+license = {text = 'MIT'}
+authors = [
+    {name = 'Maxim Ivanov', email = 'ivanovmg@gmail.com'},
+]
+keywords = ['xml', 'testing', 'assert', 'diff', 'comparison']
+classifiers = [
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Topic :: Software Development :: Testing',
+    'Topic :: Text Processing :: Markup :: XML',
+]
+dependencies = [
+    'defusedxml>=0.6.0',
+]
+
+[project.urls]
+Homepage = 'https://github.com/ivanovmg/xmlassert'
+Changelog = 'https://github.com/ivanovmg/xmlassert/blob/main/CHANGELOG.md'
+Issues = 'https://github.com/ivanovmg/xmlassert/issues'
+
+[tool.setuptools]
+packages = {find = {where = ['src']}}
+package-dir = {'' = 'src'}
+
+[tool.setuptools.package-data]
+xmlassert = ['py.typed']
+
+[project.optional-dependencies]
+dev = [
+    'pytest>=7.0.0',
+    'pytest-cov>=4.0.0',
+    'ruff>=0.1.0',
+    'mypy>=1.0.0',
+    'types-setuptools',
+    'build>=0.10.0',
+    'twine>=4.0.0',
+    'types-defusedxml',
+]
+docs = [
+    'sphinx>=7.0.0',
+    'sphinx-rtd-theme>=1.0.0',
+]
+
+[tool.ruff]
+line-length = 79
+target-version = 'py38'
+
+# Linting rules (updated to new format)
+[tool.ruff.lint]
+select = [
+    'E',   # pycodestyle errors
+    'W',   # pycodestyle warnings
+    'F',   # pyflakes
+    'I',   # isort
+    'B',   # flake8-bugbear
+    'C4',  # flake8-comprehensions
+    'UP',  # pyupgrade
+    'YTT', # flake8-2020
+    'RUF', # ruff-specific rules
+]
+ignore = [
+    'B008',  # do not perform function calls in argument defaults
+    'B905',  # zip() without an explicit strict= parameter
+    'E501',  # line too long (handled by formatter)
+    'RUF012', # mutable class defaults
+]
+
+# Import sorting (updated to new format)
+[tool.ruff.lint.isort]
+known-first-party = ['xmlassert']
+lines-after-imports = 2
+combine-as-imports = true
+
+# Per-file ignores (updated to new format)
+[tool.ruff.lint.per-file-ignores]
+'__init__.py' = ['F401']  # allow unused imports in __init__.py
+
+# Formatting configuration
+[tool.ruff.format]
+quote-style = 'single'
+skip-magic-trailing-comma = false
+
+[tool.coverage.run]
+source = ['src/xmlassert']
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+source = ['src/xmlassert', '*/site-packages']
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 90
+exclude_lines = [
+    'pragma: no cover',
+    'def __repr__',
+    'if self\.debug',
+    'raise AssertionError',
+    'raise NotImplementedError',
+    'if 0:',
+    'if __name__ == .__main__.:',
+    'if TYPE_CHECKING:',
+    'class .*\bProtocol\):',
+    'abc.abstractmethod',
+    'abstractmethod',
+    'pass',
+]
+ignore_errors = true
+
+[tool.pytest.ini_options]
+testpaths = ['tests']
+addopts = '--cov=src/xmlassert --cov-report=term-missing --cov-report=html'
+python_files = ['test_*.py']
+python_classes = ['Test*']
+python_functions = ['test_*']
+
+[tool.mypy]
+python_version = '3.8'
+strict = true
