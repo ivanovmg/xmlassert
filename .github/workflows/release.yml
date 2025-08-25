@@ -142,7 +142,7 @@ jobs:
       (contains(github.ref, 'alpha') ||
        contains(github.ref, 'beta') ||
        contains(github.ref, 'rc') ||
-       github.ref == 'refs/tags/v0.0.0-test')  # Custom condition for test releases
+       github.ref == 'refs/tags/v0.0.0-test')
 
     steps:
     - name: Download build artifacts
