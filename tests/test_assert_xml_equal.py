@@ -1,3 +1,4 @@
+from textwrap import dedent
 from typing import Any
 from xml.etree.ElementTree import ParseError
 
@@ -153,10 +154,47 @@ def test_DifferentXml_ErrorMessageContainsReadableDiff() -> None:
         assert_xml_equal(actual, expected)
 
     error_message = str(exc_info.value)
-    assert 'XML documents differ' in error_message
-    assert 'expected' in error_message
-    assert 'actual' in error_message
-    assert '---' in error_message and '+++' in error_message
+    expected = dedent(
+        """\
+        XML documents differ:
+        --- expected
+        +++ actual
+        @@ -1,3 +1,3 @@
+         <root>
+        -  <child>expected</child>
+        +  <child>actual</child>
+         </root>
+        """
+    ).strip()
+    assert error_message == expected
+
+
+def test_DifferentXmlNested_ErrorMessageContainsReadableDiff() -> None:
+    actual = (
+        '<root>  <tag>one</tag>\r\n  <child><sub>actual</sub></child></root>'
+    )
+    expected = '<root><child>expected</child></root>'
+
+    with pytest.raises(AssertionError) as exc_info:
+        assert_xml_equal(actual, expected)
+
+    error_message = str(exc_info.value)
+    expected = dedent(
+        """\
+        XML documents differ:
+        --- expected
+        +++ actual
+        @@ -1,3 +1,6 @@
+         <root>
+        -  <child>expected</child>
+        +  <tag>one</tag>
+        +  <child>
+        +    <sub>actual</sub>
+        +  </child>
+         </root>
+        """
+    ).strip()
+    assert error_message == expected
 
 
 def test_XmlWithSpecialCharacters_HandledCorrectly() -> None:
