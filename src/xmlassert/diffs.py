@@ -2,6 +2,10 @@ import difflib
 
 from .formatting import pretty_format_xml
 
+__all__ = [
+    'clean_diff',
+]
+
 
 def clean_diff(actual: str, expected: str) -> str:
     actual_pretty = pretty_format_xml(actual)
