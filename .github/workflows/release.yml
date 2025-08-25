@@ -32,11 +32,10 @@ jobs:
     - name: Extract package version
       id: package-version
       run: |
-        # Extract version from pyproject.toml
         PACKAGE_VERSION=$(python -c "
-        import tomli
+        import tomllib
         with open('pyproject.toml', 'rb') as f:
-            data = tomli.load(f)
+            data = tomllib.load(f)
         print(data['project']['version'])
         ")
         echo "PACKAGE_VERSION=$PACKAGE_VERSION" >> $GITHUB_OUTPUT
