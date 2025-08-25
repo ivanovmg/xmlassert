@@ -1,11 +1,12 @@
-from typing import Protocol
 from xml.etree.ElementTree import canonicalize
 
 from defusedxml.ElementTree import fromstring, tostring
 
 from .indenting import indent
 
+
 __all__ = [
+    'canonical',
     'pretty_format_xml',
 ]
 
@@ -18,3 +19,11 @@ def pretty_format_xml(xml_str: str) -> str:
         return str(tostring(root, encoding='unicode'))
     except Exception:
         return canonicalize(xml_str, strip_text=False)
+
+
+def canonical(content: str) -> str:
+    return canonicalize(
+        content,
+        strip_text=True,
+        with_comments=False,
+    )
