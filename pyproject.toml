@@ -27,8 +27,7 @@ classifiers = [
     'Topic :: Text Processing :: Markup :: XML',
 ]
 dependencies = [
-    'defusedxml~=0.7.1',
-    'lxml~=4.9.0',
+    'defusedxml>=0.6.0',
 ]
 
 [project.urls]
