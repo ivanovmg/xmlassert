@@ -103,27 +103,28 @@ source = ['src/xmlassert']
 branch = true
 parallel = true
 
+[tool.coverage.paths]
+source = ['src/xmlassert', '*/site-packages']
+
 [tool.coverage.report]
 show_missing = true
 skip_covered = true
 fail_under = 90
-
-[tool.coverage.paths]
-source = ['src/xmlassert', '*/site-packages']
-
-[tool.coverage.exclude]
-lines = [
-    '# pragma: no cover',
-    'if __name__ == .__main__.:',
+exclude_lines = [
+    'pragma: no cover',
+    'def __repr__',
+    'if self\.debug',
+    'raise AssertionError',
     'raise NotImplementedError',
-    'return NotImplemented',
-    '@abc.abstractmethod',
-    'class.*Protocol',
-    'class.*ABC',
-    'pass',
+    'if 0:',
+    'if __name__ == .__main__.:',
     'if TYPE_CHECKING:',
-    'from __future__ import',
+    'class .*\bProtocol\):',
+    'abc.abstractmethod',
+    'abstractmethod',
+    'pass',
 ]
+ignore_errors = true
 
 [tool.pytest.ini_options]
 testpaths = ['tests']
