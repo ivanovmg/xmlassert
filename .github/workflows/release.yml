@@ -10,7 +10,7 @@ on:
 # Allow only one concurrent deployment to avoid conflicts
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-flight: true
+  cancel-in-progress: true
 
 jobs:
   validate-version:
