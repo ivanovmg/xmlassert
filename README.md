@@ -13,7 +13,7 @@ it ignores formatting differences and focuses on semantic equivalence.
 - **Secure parsing**: Uses secure XML parsing practices by default
 - **Test-friendly**: Perfect for `pytest`, `unittest`, and other testing frameworks
 
-## Installation (IN PROGRESS)
+## Installation
 
 ```bash
 pip install xmlassert
@@ -24,7 +24,7 @@ pip install xmlassert
 ``` python
 from xmlassert import assert_xml_equal
 
-# These will pass (formatting differences ignored)
+# These will pass (formatting differences are ignored)
 assert_xml_equal("<root><a>text</a></root>", "<root>\n  <a>text</a>\n</root>")
 
 # This will fail with a clean diff
@@ -45,7 +45,7 @@ except AssertionError as e:
 ``` python
 from xmlassert import assert_xml_equal
 
-# Passes - formatting differences ignored
+# Passes - formatting differences are ignored
 xml1 = "<root><element>value</element></root>"
 xml2 = """
 <root>
@@ -108,3 +108,36 @@ Instead of the unreadable:
 ```
 AssertionError: XML mismatch: <root><element>expected value</element></root> != <root><element>actual value</element></root>
 ```
+
+## Troubleshooting
+
+### Namespace Handling
+XML namespaces are compared strictly.
+Ensure your XML uses consistent namespace declarations.
+
+### Large XML Documents
+For very large documents, consider using dedicated XML diff tools.
+`xmlassert` is optimized for test-sized XML snippets.
+
+### Encoding Issues
+Ensure both XML strings use the same encoding (UTF-8 recommended).
+
+
+## Why xmlassert?
+
+Compared to other XML testing approaches:
+
+| Feature | `xmlassert` | `xml.etree` | `xmlunit` | string compare |
+|---------|-----------|-------------|-----------|----------------|
+| Human-readable diffs | Yes | No | Partial | No |
+| Formatting-agnostic | Yes | No | Yes | No |
+| Easy to use | Yes | Partial | Partial | Yes |
+| Secure parsing | Yes | Partial | Yes | No |
+
+
+## Links
+
+- [PyPI Package](https://pypi.org/project/xmlassert/)
+- [Source Code](https://github.com/ivanovmg/xmlassert)
+- [Issue Tracker](https://github.com/ivanovmg/xmlassert/issues)
+- [Changelog](CHANGELOG.md)
