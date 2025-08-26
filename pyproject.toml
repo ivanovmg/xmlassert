@@ -4,7 +4,7 @@ build-backend = 'setuptools.build_meta'
 
 [project]
 name = 'xmlassert'
-version = '0.1.0rc1'
+version = '0.1.0rc2'
 description = 'Human-readable XML comparison for testing with clean diff output'
 readme = 'README.md'
 requires-python = '>=3.8'
@@ -32,7 +32,7 @@ dependencies = [
 
 [project.urls]
 Homepage = 'https://github.com/ivanovmg/xmlassert'
-Changelog = 'https://github.com/ivanovmg/xmlassert/blob/main/CHANGELOG.md'
+Changelog = 'https://github.com/ivanovmg/xmlassert/blob/master/CHANGELOG.md'
 Issues = 'https://github.com/ivanovmg/xmlassert/issues'
 
 [tool.setuptools]
