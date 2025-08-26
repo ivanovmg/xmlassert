@@ -127,16 +127,13 @@ Ensure both XML strings use the same encoding (UTF-8 recommended).
 
 Compared to other XML testing approaches:
 
-| Feature | xmlassert | `xml.etree` | `xmlunit` | string compare |
+| Feature | `xmlassert` | `xml.etree` | `xmlunit` | string compare |
 |---------|-----------|-------------|-----------|----------------|
-| Human-readable diffs | [x] | [ ] | [~] | [ ] |
-| Formatting-agnostic | [x] | [ ] | [x] | [ ] |
-| Easy to use | [x] | [~] | [~] | [x] |
-| Secure parsing | [x] | [~] | [x] | [ ] |
+| Human-readable diffs | Yes | No | Partial | No |
+| Formatting-agnostic | Yes | No | Yes | No |
+| Easy to use | Yes | Partial | Partial | Yes |
+| Secure parsing | Yes | Partial | Yes | No |
 
-- [x] = Fully supported
-- [~] = Partial support
-- [ ] = Not supported
 
 ## Links
 
