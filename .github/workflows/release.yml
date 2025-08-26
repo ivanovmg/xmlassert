@@ -142,6 +142,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [validate-version, build]
     if: |
+      success() && needs.build.result == 'success' &&
       startsWith(github.ref, 'refs/tags/v') &&
       (contains(github.ref, 'alpha') ||
        contains(github.ref, 'beta') ||
@@ -153,6 +154,16 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: distribution-packages
+        path: dist/
+
+    - name: DEBUG Check current directory
+      run: |
+        echo "Current directory:"
+        pwd
+        echo "Contents:"
+        ls -la
+        echo "Dist directory:"
+        ls -la dist/ || echo "dist/ doesn't exist"
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -216,13 +227,22 @@ jobs:
     name: Create GitHub Release
     runs-on: ubuntu-latest
     needs: [test-pypi, pypi]
-    if: always() && startsWith(github.ref, 'refs/tags/v')
+    if: |
+      always() &&
+      startsWith(github.ref, 'refs/tags/v') &&
+      (
+        (needs.test-pypi.result == 'success' || needs.test-pypi.result == 'skipped') &&
+        (needs.pypi.result == 'success' || needs.pypi.result == 'skipped')
+      )
+    permissions:
+      contents: write
 
     steps:
     - name: Download build artifacts
       uses: actions/download-artifact@v4
       with:
         name: distribution-packages
+        path: dist/
 
     - name: Create GitHub Release
       uses: softprops/action-gh-release@v1
