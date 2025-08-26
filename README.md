@@ -24,7 +24,7 @@ pip install xmlassert
 ``` python
 from xmlassert import assert_xml_equal
 
-# These will pass (formatting differences ignored)
+# These will pass (formatting differences are ignored)
 assert_xml_equal("<root><a>text</a></root>", "<root>\n  <a>text</a>\n</root>")
 
 # This will fail with a clean diff
@@ -45,7 +45,7 @@ except AssertionError as e:
 ``` python
 from xmlassert import assert_xml_equal
 
-# Passes - formatting differences ignored
+# Passes - formatting differences are ignored
 xml1 = "<root><element>value</element></root>"
 xml2 = """
 <root>
