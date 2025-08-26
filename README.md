@@ -108,3 +108,10 @@ Instead of the unreadable:
 ```
 AssertionError: XML mismatch: <root><element>expected value</element></root> != <root><element>actual value</element></root>
 ```
+
+## Links
+
+- [PyPI Package](https://pypi.org/project/xmlassert/)
+- [Source Code](https://github.com/ivanovmg/xmlassert)
+- [Issue Tracker](https://github.com/ivanovmg/xmlassert/issues)
+- [Changelog](CHANGELOG.md)
