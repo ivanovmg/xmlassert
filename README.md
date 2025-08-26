@@ -109,6 +109,20 @@ Instead of the unreadable:
 AssertionError: XML mismatch: <root><element>expected value</element></root> != <root><element>actual value</element></root>
 ```
 
+## Troubleshooting
+
+### Namespace Handling
+XML namespaces are compared strictly.
+Ensure your XML uses consistent namespace declarations.
+
+### Large XML Documents
+For very large documents, consider using dedicated XML diff tools.
+`xmlassert` is optimized for test-sized XML snippets.
+
+### Encoding Issues
+Ensure both XML strings use the same encoding (UTF-8 recommended).
+
+
 ## Why xmlassert?
 
 Compared to other XML testing approaches:
