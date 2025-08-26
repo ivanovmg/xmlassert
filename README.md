@@ -109,6 +109,21 @@ Instead of the unreadable:
 AssertionError: XML mismatch: <root><element>expected value</element></root> != <root><element>actual value</element></root>
 ```
 
+## Why xmlassert?
+
+Compared to other XML testing approaches:
+
+| Feature | xmlassert | `xml.etree` | `xmlunit` | string compare |
+|---------|-----------|-------------|-----------|----------------|
+| Human-readable diffs | [x] | [ ] | [~] | [ ] |
+| Formatting-agnostic | [x] | [ ] | [x] | [ ] |
+| Easy to use | [x] | [~] | [~] | [x] |
+| Secure parsing | [x] | [~] | [x] | [ ] |
+
+- [x] = Fully supported
+- [~] = Partial support
+- [ ] = Not supported
+
 ## Links
 
 - [PyPI Package](https://pypi.org/project/xmlassert/)
