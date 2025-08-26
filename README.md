@@ -13,7 +13,7 @@ it ignores formatting differences and focuses on semantic equivalence.
 - **Secure parsing**: Uses secure XML parsing practices by default
 - **Test-friendly**: Perfect for `pytest`, `unittest`, and other testing frameworks
 
-## Installation (IN PROGRESS)
+## Installation
 
 ```bash
 pip install xmlassert
